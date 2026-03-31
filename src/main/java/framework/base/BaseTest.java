@@ -41,23 +41,8 @@ public class BaseTest {
             browser = configBrowser;
         }
 
-        switch (browser.toLowerCase()) {
-            case "firefox":
-                WebDriverManager.firefoxdriver().setup();
-                tlDriver.set(new FirefoxDriver());
-                break;
-            case "edge":
-                WebDriverManager.edgedriver().setup();
-                tlDriver.set(new EdgeDriver());
-                break;
-            default:
-                WebDriverManager.chromedriver().setup();
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--remote-allow-origins=*");
-                tlDriver.set(new ChromeDriver(options));
-        }
+        tlDriver.set(DriverFactory.createDriver(browser));
 
-        getDriver().manage().window().maximize();
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(config.getImplicitWait()));
         getDriver().get(config.getBaseUrl());
     }
