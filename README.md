@@ -1,7 +1,8 @@
 # Lab 9 - Selenium Framework with POM & Data-Driven Testing
 
 ## 📋 Cấu trúc Project
-
+[![Test Status](https://github.com/{user}/{repo}/actions/workflows/selenium-full.yml/badge.svg)](https://github.com/{user}/{repo}/actions)
+[![Allure Report](https://img.shields.io/badge/Allure-Report-orange)](https://{user}.github.io/{repo}/)
 ```
 Lab9/
 ├── src/

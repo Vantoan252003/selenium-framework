@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Grid Test Suite" parallel="tests" thread-count="4">
+
+    <test name="Chrome – LoginTest">
+        <parameter name="browser" value="chrome"/>
+        <classes><class name="tests.LoginTest"/></classes>
+    </test>
+
+    <test name="Chrome – CartTest">
+        <parameter name="browser" value="chrome"/>
+        <classes><class name="tests.CartTest"/></classes>
+    </test>
+
+    <test name="Firefox – LoginTest">
+        <parameter name="browser" value="firefox"/>
+        <classes><class name="tests.LoginTest"/></classes>
+    </test>
+
+    <test name="Firefox – CartTest">
+        <parameter name="browser" value="firefox"/>
+        <classes><class name="tests.CartTest"/></classes>
+    </test>
+
+</suite>

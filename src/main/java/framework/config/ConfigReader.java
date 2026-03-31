@@ -52,4 +52,20 @@ public class ConfigReader {
     public String getScreenshotPath() {
         return properties.getProperty("screenshot.path");
     }
+
+    public String getUsername() {
+        String username = System.getenv("APP_USERNAME");
+        if (username == null || username.isBlank()) {
+            username = properties.getProperty("app.username");
+        }
+        return username;
+    }
+
+    public String getPassword() {
+        String password = System.getenv("APP_PASSWORD");
+        if (password == null || password.isBlank()) {
+            password = properties.getProperty("app.password");
+        }
+        return password;
+    }
 }

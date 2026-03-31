@@ -18,6 +18,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import framework.config.ConfigReader;
+import io.qameta.allure.Attachment;
 
 public class BaseTest {
     private static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
@@ -47,11 +48,17 @@ public class BaseTest {
     public void tearDown(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
             takeScreenshot(result.getName());
+            attachScreenshot(getDriver());
         }
         if (getDriver() != null) {
             getDriver().quit();
             tlDriver.remove();
         }
+    }
+
+    @Attachment(value = "Ảnh chụp khi thất bại", type = "image/png")
+    public byte[] attachScreenshot(WebDriver driver) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
     private void takeScreenshot(String testName) {

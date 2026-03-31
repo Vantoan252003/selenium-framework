@@ -1,22 +1,24 @@
 package tests;
 
+import java.util.Map;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import framework.base.BaseTest;
+import framework.config.ConfigReader;
 import framework.pages.CartPage;
 import framework.pages.CheckoutPage;
 import framework.pages.InventoryPage;
 import framework.pages.LoginPage;
 import framework.utils.TestDataFactory;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import java.util.Map;
 
 public class CheckoutTest extends BaseTest {
 
     @Test
     public void testCheckoutWithRandomData() {
         LoginPage loginPage = new LoginPage(getDriver());
-        InventoryPage inventoryPage = loginPage.login("standard_user", "secret_sauce");
+        InventoryPage inventoryPage = loginPage.login(ConfigReader.getInstance().getUsername(), ConfigReader.getInstance().getPassword());
 
         inventoryPage.addFirstItemToCart();
         CartPage cartPage = inventoryPage.goToCart();
