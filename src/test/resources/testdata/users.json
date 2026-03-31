@@ -1,0 +1,7 @@
+[
+  { "username": "standard_user", "password": "secret_sauce", "role": "user", "expectSuccess": true, "description": "User hợp lệ" },
+  { "username": "locked_out_user", "password": "secret_sauce", "role": "user", "expectSuccess": false, "description": "User bị kho" },
+  { "username": "problem_user", "password": "secret_sauce", "role": "user", "expectSuccess": true, "description": "User có vấn đề" },
+  { "username": "performance_glitch_user", "password": "secret_sauce", "role": "user", "expectSuccess": true, "description": "User bị chậm" },
+  { "username": "invalid_user", "password": "secret_sauce", "role": "user", "expectSuccess": false, "description": "User không tồn tại" }
+]
