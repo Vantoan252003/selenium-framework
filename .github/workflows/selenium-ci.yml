@@ -14,8 +14,6 @@ jobs:
         browser: [chrome, firefox]  # Tạo 2 job chạy song song
       fail-fast: false
     steps:
-      - name: Chạy test (${{ matrix.browser }})
-        run: mvn clean test -Dbrowser=${{ matrix.browser }} -DsuiteXmlFile=testng-smoke.xml
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -27,7 +25,7 @@ jobs:
           cache: maven
 
       - name: Chạy Selenium Tests
-        run: mvn clean test -Dbrowser=chrome -Denv=dev -DsuiteXmlFile=testng-smoke.xml
+        run: mvn clean test -Dbrowser=${{ matrix.browser }} -Denv=dev -DsuiteXmlFile=testng-smoke.xml
         env:
           APP_PASSWORD: ${{ secrets.SAUCEDEMO_PASSWORD }}
 
